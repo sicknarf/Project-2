@@ -1,0 +1,11 @@
+<%- include('../partials/header')%>
+
+<%= request.title %>
+this is response:
+<% if (response){ %>
+<%= response %>
+<% } else { %>
+no responses yet.
+<% } %>
+
+<%- include('../partials/footer')%>

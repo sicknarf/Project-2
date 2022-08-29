@@ -1,0 +1,39 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const commentSchema = new Schema({
+  comment: { type: String, 
+              required: true},
+  user: {   type: Schema.Types.ObjectId, 
+            ref: 'User'},
+  userName: String,
+  userAvatar: String
+}, {
+  timestamps: true
+  });
+
+const ratingSchema = new Schema({
+  rating: { type: Number, 
+            min: 1, 
+            max: 5, 
+            default: 5},
+  user: {   type: Schema.Types.ObjectId, 
+            ref: 'User'},
+  userName: String,
+  userAvatar: String
+}, {
+  timestamps: true
+  });
+
+const responseSchema = new Schema ({
+  content: String, //the url of the image response
+  caption: String,
+  comments: [commentSchema],
+  ratings: [ratingSchema],
+  user: {   type: Schema.Types.ObjectId, 
+    ref: 'User'},
+  userName: String,
+  userAvatar: String,
+})
+
+module.exports = mongoose.model('Response', responseSchema);

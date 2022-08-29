@@ -1,0 +1,28 @@
+<%- include('../partials/header')%>
+<h1>Requests Home</h1>
+<p>Here you can request pictures of things you want. Or you can upload pictures if you have something that someone else may want!</p>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Category</th>
+      <th>Title</th>
+      <th>Date Requested</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% requests.forEach(function(r) { %>
+      <tr>
+        <td><%= r.user %></td>
+        <td><%= r.category %></td>
+        <td><%= r.title %></td>
+        <td><%= `${r.createdAt.getUTCMonth()+1}-${r.createdAt.getUTCDate()}-${r.createdAt.getUTCFullYear()}` %></td>
+        <td><a href="/requests/<%= r._id %>" class="btn btn-outline-warning">details</a></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+
+<%- include('../partials/footer')%>
