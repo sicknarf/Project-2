@@ -28,6 +28,7 @@ const ratingSchema = new Schema({
 const responseSchema = new Schema ({
   content: String, //the url of the image response
   caption: String,
+  request: {type: Schema.Types.ObjectId, ref: "requests"},
   comments: [commentSchema],
   ratings: [ratingSchema],
   user: {   type: Schema.Types.ObjectId, 

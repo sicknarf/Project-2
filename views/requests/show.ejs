@@ -1,11 +1,18 @@
 <%- include('../partials/header')%>
 
 <%= request.title %>
-this is response:
-<% if (response){ %>
-<%= response %>
-<% } else { %>
-no responses yet.
+<br>
+<% if (response.length){ %>
+
+<% response.forEach(function(r) { %>
+    <%= r.content %>
+    <%= r.caption %>
+
+<% })} else { %>
+
+<h4>no responses yet.</h4>
 <% } %>
+<br>
+<a href="<%= request._id %>/responses/new" class="btn btn-outline-warning" >post a pic!</a>
 
 <%- include('../partials/footer')%>

@@ -15,11 +15,10 @@ function newRequest(req, res) {
 
 function createRequest(req, res) {
     const request = new Request(req.body);
-    console.log('below is request');
     console.log(request);
     request.save(function(err) {
-    if (err) return res.send('an error has occurred, take a look at this error');
-    // if (err) return res.render('requests/new', { title: 'new request form'});
+    // if (err) return res.render('./error', {error: err, message: 'oops'});
+    if (err) return res.render('requests/new', { title: 'new request form'});
     res.redirect('/requests');
     });
 }

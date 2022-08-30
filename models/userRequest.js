@@ -8,7 +8,8 @@ const requestSchema = new Schema({
     },
     category: {
       type: String,
-      required: true
+      required: true,
+      unique: true
       // temporarily commenting out for functionality. will implement as a separate shema
       // type: Schema.Types.ObjectId,
       // ref: 'Category',
