@@ -3,7 +3,7 @@ var router = express.Router();
 var responsesCtrl = require('../controllers/responses')
 
 router.get('/requests/:id/responses/new', responsesCtrl.new);
-// http://localhost:3000/requests/630d6485fdf359e4c115f05f/responses
 router.post('/requests/:id/responses', responsesCtrl.create);
+router.get('/requests/:id/:id', responsesCtrl.show);
 
 module.exports = router;

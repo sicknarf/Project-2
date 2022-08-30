@@ -15,7 +15,27 @@ function createResponse(req, res){
     })
 }
 
+function showResponse(req, res){
+    Response.findById(req.params.id, function(err, response){
+        if (err) return res.render('./error', {error: err, message: 'oops'});
+        res.render('responses/show', {response, title: 'a picture for your request!'});
+        })
+}
+
+// function showResponse(req, res){
+//     Response.findById(req.params.id, function(err, response){
+//         Request.findById({request: response.request}, function(err, response) {
+//             if (err) return res.render('./error', {error: err, message: 'oops'});
+//             res.render('responses/show', {request, response, title: 'request details'});
+//         })})
+// }
+
+function createComment(req, res){
+
+}
+
 module.exports = {
     new: newResponse,
-    create: createResponse
+    create: createResponse,
+    show: showResponse,
 }

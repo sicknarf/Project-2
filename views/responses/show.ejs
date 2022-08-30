@@ -1,0 +1,28 @@
+<%- include('../partials/header')%>
+
+<%= response %>
+<br>
+<br>
+Take a look at your pic here: <br>
+<%= response.content %>
+<br>
+<%= response.caption %>
+
+<% if (response.comments.length){ %>
+
+    <% response.comments.forEach(function(r) { %>
+        <%= r %><br>
+    
+    <% })} else { %>
+    
+    <h4>no comments yet.</h4>
+    <% } %>
+
+    <form action="/requests/<%= response.request %>/<%= response.id %>/comments" method="POST">
+        <label>
+            <textarea name="comments" rows="3" cols="40" placeholder="enter a comment..."></textarea>
+        </label><br>
+        <input type="submit" class="btn btn-outline-info" value="add a comment!">
+      </form>
+
+<%- include('../partials/footer')%>

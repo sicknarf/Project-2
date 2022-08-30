@@ -5,8 +5,8 @@
 <% if (response.length){ %>
 
 <% response.forEach(function(r) { %>
-    <%= r.content %>
-    <%= r.caption %>
+    <a href="/requests/<%= request._id %>/<%= r._id %>"><%= r.content %><br>
+    <%= r.caption %><br></a>
 
 <% })} else { %>
 
