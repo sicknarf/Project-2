@@ -1,5 +1,7 @@
 <%- include('../partials/header')%>
 
+<a href="/requests/<%= response.request %>" class="btn btn-outline-success">go back</a> 
+
 <%= response %>
 <br>
 <br>
@@ -11,18 +13,28 @@ Take a look at your pic here: <br>
 <% if (response.comments.length){ %>
 
     <% response.comments.forEach(function(r) { %>
-        <%= r %><br>
+        <%= r.comment %><br>
     
     <% })} else { %>
     
     <h4>no comments yet.</h4>
     <% } %>
 
-    <form action="/requests/<%= response.request %>/<%= response.id %>/comments" method="POST">
+    <form action="/requests/<%= response.request %>/<%= response.id %>" method="POST">
         <label>
-            <textarea name="comments" rows="3" cols="40" placeholder="enter a comment..."></textarea>
+            <textarea name="comment" rows="3" cols="40" placeholder="enter a comment..."></textarea>
         </label><br>
         <input type="submit" class="btn btn-outline-info" value="add a comment!">
       </form>
+
+<% if (response.ratings.length){ %>
+
+    <% response.ratings.forEach(function(r) { %>
+        <%=  %><br>
+
+    <% })} else { %>
+    
+    <h4>no ratings yet.</h4>
+    <% } %>
 
 <%- include('../partials/footer')%>

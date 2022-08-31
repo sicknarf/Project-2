@@ -30,9 +30,6 @@ function showResponse(req, res){
 //         })})
 // }
 
-function createComment(req, res){
-
-}
 
 module.exports = {
     new: newResponse,

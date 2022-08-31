@@ -25,8 +25,10 @@ function createRequest(req, res) {
 
 function show(req, res){
     Request.findById(req.params.id, function(err, request){
+        console.log(request);
+        console.log('ABOVE IS REQUEST ON REQUESTS CONTROLLER ****')
         Response.find({request: request._id}, function(err, response) {
-            if (err) {return res.send('controller line 30 error')};
+            if (err) {return res.send('controller line 31 error'+err)};
             res.render('requests/show', {request, response, title: 'request details'});
         })})
 }
