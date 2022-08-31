@@ -21,9 +21,7 @@ const ratingSchema = new Schema({
             ref: 'User'},
   userName: String,
   userAvatar: String
-}, {
-  timestamps: true
-  });
+});
 
 const responseSchema = new Schema ({
   content: String, //the url of the image response
