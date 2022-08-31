@@ -15,7 +15,9 @@ function newRequest(req, res) {
 
 function createRequest(req, res) {
     const request = new Request(req.body);
-    console.log(request);
+    req.body.user = req.user._id;
+    req.body.userName = req.user.name;
+    req.body.userAvatar = req.user.avatar;
     request.save(function(err) {
     // if (err) return res.render('./error', {error: err, message: 'oops'});
     if (err) return res.render('requests/new', { title: 'new request form'});

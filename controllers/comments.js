@@ -2,8 +2,9 @@ var Response = require('../models/userResponse');
 
 function create(req, res){
     Response.findById(req.params.id, function(error, response){
-        console.log(req.params.id);
-        console.log('above is req.params.id')
+        req.body.user = req.user._id;
+        req.body.userName = req.user.name;
+        req.body.userAvatar = req.user.avatar;
         response.comments.push(req.body);
         console.log('below is response')
         console.log(response)
@@ -38,14 +39,11 @@ function updateComment(req, res) {
     Response.findOne({'comments._id': req.params.id})
         .then(function(response){
             const comment = response.comments.id(req.params.id);
-            console.log('response', response)
-            console.log('comment:', comment);
-            console.log('req.params.id:', req.params.id);
-            console.log('req.body', req.body);
-            comment.update(req.body)
-            // comment.findByIdAndUpdate(req.body);
-        }).then(function() {
-            res.redirect(`/requests/${response.request}/${response.id}`) 
+            comment.comment = req.body.comment;
+            response.save()
+            // comment.update(req.body)
+                .then(function() {
+                    res.redirect(`/requests/${response.request}/${response.id}`)})
         })
 }
 

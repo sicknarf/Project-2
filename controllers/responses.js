@@ -9,6 +9,9 @@ function newResponse(req, res) {
 function createResponse(req, res){
     let requestId = req.params.id;
     req.body.request = requestId;
+    req.body.user = req.user._id;
+    req.body.userName = req.user.name;
+    req.body.userAvatar = req.user.avatar;
     Response.create(req.body, function (err, response){
         res.redirect(`/requests/${requestId}`)
     })

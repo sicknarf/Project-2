@@ -1,9 +1,9 @@
 <%- include('../partials/header')%>
 
 <h1>Edit Comment</h1>
-    <form action="/requests/<%= response.request %>/<%= response.id %>/<%= comment._id %>/edit?_method=PUT" method="POST" autocomplete="off">
+    <form action="/requests/<%= response.request %>/<%= response.id %>/<%= comment._id %>/edit?_method=PUT" method="POST">
     <textarea name="comment" rows="3" cols="40" ><%= comment.comment %></textarea><br>
     <button type="submit">Save Comment</button>
     </form>
 
-<%- include('../partials/footer')%>
+<%- include('../partials/footer')%>r

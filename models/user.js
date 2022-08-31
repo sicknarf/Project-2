@@ -5,6 +5,7 @@ const userSchema = new Schema({
     username: String, // we expect this to be google username
     // requests: { type: Number,
     //             default: 0},
+    googleId: {type: String, required: true},
     email: String,
     avatar: String
 }, {
