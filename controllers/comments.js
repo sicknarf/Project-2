@@ -42,9 +42,10 @@ function updateComment(req, res) {
             console.log('comment:', comment);
             console.log('req.params.id:', req.params.id);
             console.log('req.body', req.body);
-            comment.update(req.params.id, req.body);
+            comment.update(req.body)
+            // comment.findByIdAndUpdate(req.body);
         }).then(function() {
-            res.redirect(`/requests/${response.request}/${response.id}`)
+            res.redirect(`/requests/${response.request}/${response.id}`) 
         })
 }
 

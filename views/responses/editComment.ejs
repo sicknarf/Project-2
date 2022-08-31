@@ -1,6 +1,6 @@
 <%- include('../partials/header')%>
 
-<h1>Edit Todo</h1>
+<h1>Edit Comment</h1>
     <form action="/requests/<%= response.request %>/<%= response.id %>/<%= comment._id %>/edit?_method=PUT" method="POST" autocomplete="off">
     <textarea name="comment" rows="3" cols="40" ><%= comment.comment %></textarea><br>
     <button type="submit">Save Comment</button>
