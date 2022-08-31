@@ -13,6 +13,44 @@ function create(req, res){
         })})
     }
 
+function deleteComment(req, res) {
+    Response.findOne({'comments._id': req.params.id})
+        .then(function(response){
+            const comment = response.comments.id(req.params.id);
+            // if(!review.user.equals(req.user._id)) return res.redirect(`/movies/${movie.id}`);
+            comment.remove();
+            response.save()
+            .then(function(){
+                res.redirect(`/requests/${response.request}/${response.id}`)
+            }).catch(function (error){
+            return next(error)
+            })})
+}
+
+function editComment(req, res) {
+    Response.findOne({'comments._id': req.params.id})
+        .then(function(response){
+            const comment = response.comments.id(req.params.id);
+            res.render('./responses/editComment', {title: 'edit your comment', comment, response})
+    })
+}
+function updateComment(req, res) {
+    Response.findOne({'comments._id': req.params.id})
+        .then(function(response){
+            const comment = response.comments.id(req.params.id);
+            console.log('response', response)
+            console.log('comment:', comment);
+            console.log('req.params.id:', req.params.id);
+            console.log('req.body', req.body);
+            comment.update(req.params.id, req.body);
+        }).then(function() {
+            res.redirect(`/requests/${response.request}/${response.id}`)
+        })
+}
+
 module.exports = {
     create,
+    delete: deleteComment,
+    edit: editComment,
+    update: updateComment
 }

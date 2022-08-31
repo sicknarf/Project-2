@@ -37,23 +37,11 @@ function averageRatings(array){
 //         })})
 // }
 
-function deleteComment(req, res) {
-    Response.findOne({'comments._id': req.params.id})
-        .then(function(response){
-            const comment = response.comments.id(req.params.id);
-            comment.remove();
-            response.save()
-            .then(function(){
-                res.redirect(`/requests/${response.request}/${response.id}`)
-            }).catch(function (error){
-            return next(error)
-            })})
-}
+
 // res.redirect(`/requests/${response.request}/${response.id}`)
 
 module.exports = {
     new: newResponse,
     create: createResponse,
     show: showResponse,
-    delete: deleteComment
 }
