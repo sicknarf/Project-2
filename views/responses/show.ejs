@@ -3,6 +3,7 @@
 <a href="/requests/<%= response.request %>" class="btn btn-outline-success">go back</a> 
 
 <%= response %>
+
 <br>
 <br>
 Take a look at your pic here: <br>
@@ -13,7 +14,10 @@ Take a look at your pic here: <br>
 <% if (response.comments.length){ %>
 
     <% response.comments.forEach(function(r) { %>
-        <%= r.comment %><br>
+
+        <form action="/requests/<%= response.request %>/<%= response.id %>/<%= r._id %>?_method=DELETE" method="POST">
+            <button type="submit">X</button>
+          </form><%= r.comment %><br>
     
     <% })} else { %>
     
@@ -27,14 +31,24 @@ Take a look at your pic here: <br>
         <input type="submit" class="btn btn-outline-info" value="add a comment!">
       </form>
 
-<% if (response.ratings.length){ %>
+      <% if (response.ratings.length){ %>
 
-    <% response.ratings.forEach(function(r) { %>
-        <%=  %><br>
+        <%= avg %> out of 5 stars
 
-    <% })} else { %>
-    
-    <h4>no ratings yet.</h4>
-    <% } %>
+        <% } else { %>
+        
+        <h4>no ratings yet.</h4>
+        <% } %>
+
+        <form action="/requests/<%= response.request %>/<%= response.id %>/rate" method="POST">
+        <select name="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5" selected>5</option>
+        </select>
+        <input type="submit" class="btn btn-outline-info btn-sm" value="rate this picture">
+        </form>
 
 <%- include('../partials/footer')%>
