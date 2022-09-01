@@ -21,7 +21,6 @@ function createRequest(req, res) {
     console.log(req.body);
     console.log(request)
     request.save(function(err) {
-    // if (err) return res.render('./error', {error: err, message: 'oops'});
     if (err) return res.render('requests/new', { title: 'new request form'});
     res.redirect('/requests');
     });
@@ -31,8 +30,8 @@ function show(req, res){
     Request.findById(req.params.id, function(err, request){
         console.log(request);
         Response.find({request: request._id}, function(err, response) {
-            if (err) {return res.send('controller line 31 error'+err)};
-            res.render('requests/show', {request, response, title: 'request details'});
+            if (err) {return res.send('controller line 34 error'+err)};
+            res.render('requests/show', {request, response, title: `${request.userName} wants pics of ${request.category}`});
         })})
 }
 
