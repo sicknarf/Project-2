@@ -11,11 +11,12 @@
     <title><%= title %></title>
 </head>
 <body>
-<nav>
-    <a href="/requests" class="btn btn-info">Home</a> <a href="/requests/new" class="btn btn-outline-info">New Post</a>
-    <% if (user) { %>
-        <a href="/logout">LOG OUT</a>
-    <% } else { %> <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
-    <% } %>
-</nav>
+    <nav id="top-menu">
+        <div class="menu-items" id="home-button"><a href="/requests" class="btn btn-info">Home</a></div>
+        <div class="menu-items" id="new-button"><a href="/requests/new" class="btn btn-outline-info">New Post</a></div>
+        <div class="menu-items" id="login-button"><% if (user) { %>
+            <a href="/logout" class="btn btn-sm btn-transparent">LOG OUT</a>
+        <% } else { %> <a href="/auth/google" class="login btn btn-outline-warning">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+        <% } %></div>
+    </nav>
 <main>

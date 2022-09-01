@@ -1,61 +1,87 @@
 <%- include('../partials/header')%>
 
+<div class="show-response-page">
+
+<div class="d-flex justify-content-between">
 <a href="/requests/<%= response.request %>" class="btn btn-outline-success">go back</a> 
 
-
+<% if (user && user._id.equals(response.user)) { %>
 <form action="/requests/<%= response.request %>/<%= response.id %>?_method=DELETE" method="POST">
-    <button class="btn btn-outline-danger btn-sm" type="submit">delete this pic</button>
+    <button class="btn btn-outline-danger" type="submit">delete this pic</button>
 </form>
+<% } %>
+</div>
 
 <br>
+<h2><%= response.userName %>'s post</h2>
+<%= response.caption %><br>
+<% if (response.ratings.length){ %>
+    <%= avg %> out of 5 stars
+    <% } else { %>
+    no ratings yet.
+    <% } %>
+    <form action="/requests/<%= response.request %>/<%= response.id %>/rate" method="POST">
+    <% if (user){ %>
+    <select name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5" selected>5</option>
+    </select>
+        <input type="submit" class="btn btn-outline-info btn-sm" value="rate this picture">
+    </form>
+    <% } %>
+
+<img class="main-post" src="<%= response.content %>">
 <br>
-Take a look at your pic here: <br>
-<%= response.content %>
-<br>
-<%= response.caption %>
+
 
 <% if (response.comments.length){ %>
     <% response.comments.forEach(function(r) { %>
-        <div class="comment">
-            <% if (user && user._id.equals(response.user)) { %>
-            <form action="/requests/<%= response.request %>/<%= response.id %>/<%= r._id %>?_method=DELETE" method="POST">
-                <button class="btn btn-outline-danger btn-sm" type="submit">X</button>
-            </form>
-            <% } %>
-            <%= r.comment %>
-            <a href="/requests/<%= response.request %>/<%= response.id %>/<%= r._id %>/edit">
-                <button class="btn btn-outline-dark btn-sm" type="submit">edit</button>
-            </a>
+
+<div class="comment-thread">
+    <div class="comment">
+        <div class="comment-heading">
+            <div class="comment-info">
+                <span class="comment-author"><%= r.userName %></span>
+            </div>
         </div>
+        <div class="comment-body">
+            <p>
+                <%= r.comment %>
+            </p>
+            <% if (user && user._id.equals(response.user)) { %>
+                <div class="d-flex justify-content-end">
+                    <form action="/requests/<%= response.request %>/<%= response.id %>/<%= r._id %>/edit">
+                        <button class="btn btn-outline-dark btn-sm" type="submit">edit</button>
+                    </form>
+                    &nbsp;
+                    <form action="/requests/<%= response.request %>/<%= response.id %>/<%= r._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-outline-danger btn-sm" type="submit">delete</button>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+
     <% })} else { %>
     <h4>no comments yet.</h4>
     <% } %>
     <% if (user){ %>
     <form action="/requests/<%= response.request %>/<%= response.id %>" method="POST">
         <label>
-            <textarea name="comment" rows="3" cols="40" placeholder="enter a comment..."></textarea>
+            <textarea name="comment" rows="3" cols="81" placeholder="enter a comment..."></textarea>
         </label><br>
         <input type="submit" class="btn btn-outline-info" value="add a comment!">
     </form>
     <% }else{ %>
         <a class="btn btn-outline-danger" href="/auth/google">log in to comment and rate</a>
     <% } %>
-    <% if (response.ratings.length){ %>
-        <%= avg %> out of 5 stars
-        <% } else { %>
-        <h4>no ratings yet.</h4>
-        <% } %>
-        <form action="/requests/<%= response.request %>/<%= response.id %>/rate" method="POST">
-        <% if (user){ %>
-        <select name="rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5" selected>5</option>
-        </select>
-            <input type="submit" class="btn btn-outline-info btn-sm" value="rate this picture">
-        <% } %>
-        </form>
+
+
+</div>
 
 <%- include('../partials/footer')%>

@@ -1,14 +1,34 @@
 <%- include('../partials/header')%>
 
-<%= request.title %>
+<h2>Request for: <b><%= request.category %></b></h2>
+
+<div class="row">
+    <div class="col-1 user-details"><img src="<%= request.userAvatar %>"></div>
+    <div class="col-3 user-details"><%= request.userName %> asks:</div>
+</div>
+<div class="row">
+    <div class="col-4 user-details"><%= request.title %></div>
+</div>
+
 <br>
 <% if (response.length){ %>
 
-<% response.forEach(function(r) { %>
-    <a href="/requests/<%= request._id %>/<%= r._id %>"><%= r.content %><br>
-    <%= r.caption %><br></a>
+<div class="d-flex flex-wrap-reverse">
 
-<% })} else { %>
+<% response.forEach(function(r) { %>
+    
+    <div class="p-4 individual-response">
+        <a href="/requests/<%= request._id %>/<%= r._id %>" class="post-link">
+            <div class="response-picture">
+                <img class="response-pic" src="<%= r.content %>">
+            </div>
+        <div class="post-details"><div><%= r.userName %> says:</div><div class="response-caption"><%= r.caption %></div></div>
+        </a>
+    </div>
+<% }) %>
+</div>
+
+<% } else { %>
 
 <h4>no responses yet.</h4>
 <% } %>
@@ -17,8 +37,7 @@
     <a href="<%= request._id %>/responses/new" class="btn btn-outline-warning">post a pic!</a>
     <% }else{ %>
     <a class="btn btn-outline-danger" href="/auth/google">you must be logged in to post!</a>
-      <% } %>
-
+    <% } %>
 
 <%- include('../partials/footer')%>
 

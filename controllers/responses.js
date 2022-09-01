@@ -1,5 +1,5 @@
 const Response = require('../models/userResponse');
-const Request = require('../models/userRequest');
+// const Request = require('../models/userRequest');
 
 function newResponse(req, res) {
     // console.log('below is req params id')
@@ -7,29 +7,17 @@ function newResponse(req, res) {
     res.render('./responses/new', {title: 'submit a response', requestId: req.params.id})
 }
 
-function createResponse(req, res){
-    let requestId = req.params.id;
-    req.body.request = requestId;
-    Response.create(req.body, function (err, response){
-        console.log(req.user)
-        res.redirect(`/requests/${requestId}`)
-    })
+function createResponse(req, res) {
+    const response = new Response(req.body);
+    response.request = req.params.id;
+    response.user = req.user._id;
+    response.userName = req.user.name;
+    response.userAvatar = req.user.avatar;
+    response.save(function(err) {
+    if (err) return res.render('./error', {error: err, message: 'oops'});
+    res.redirect(`/requests/${response.request}`);
+    });
 }
-
-// function createResponse(req, res){
-//     // Request.findOne({'request._id': req.params.id}, function(request){
-//     Request.findByIdAndUpdate(req.params.id, function(error, request){
-//         // req.body.user = req.user._id;
-//         req.body.userName = req.user.name;
-//         req.body.userAvatar = req.user.avatar;
-//         request.response.push(req.body);
-//         res.send(request)
-//         // request.save(function(error){
-//         //     if (error) return res.render('./error', {error, message: 'ya dun goofed'});
-//         //     res.redirect(`/requests/${request}`)
-//         // })
-//     })
-//     }
 
 
 function showResponse(req, res){
@@ -50,9 +38,10 @@ function averageRatings(array){
 function deleteResponse(req, res) {
     Response.findOne({'response._id': req.params.id})
         .then(function(response){
+            let requestId = response.request;
             response.remove()
             .then(function(){
-                res.redirect(`/requests`)
+                res.redirect(`/requests/${requestId}`)
             }).catch(function (error){
             return next(error)
             })})

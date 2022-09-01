@@ -1,20 +1,20 @@
 <%- include('../partials/header')%>
-<h1>Requests Home</h1>
+<h2>Requests Home</h2>
 <p>Here you can request pictures of things you want. Or you can upload pictures if you have something that someone else may want!</p>
-<table>
+<table class="table table-hover table-striped">
   <thead>
     <tr>
-      <th>User</th>
-      <th>Category</th>
-      <th>Title</th>
-      <th>Date Requested</th>
-      <th>Details</th>
+      <th scope="col">User</th>
+      <th scope="col">Category</th>
+      <th scope="col">Title</th>
+      <th scope="col">Date Requested</th>
+      <th scope="col">Details</th>
     </tr>
   </thead>
   <tbody>
     <% requests.forEach(function(r) { %>
       <tr>
-        <td><%= r.userName %></td>
+        <td scope="row"><%= r.userName %></td>
         <td><%= r.category %></td>
         <td><%= r.title %></td>
         <td><%= `${r.createdAt.getUTCMonth()+1}-${r.createdAt.getUTCDate()}-${r.createdAt.getUTCFullYear()}` %></td>

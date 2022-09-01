@@ -1,10 +1,10 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgb(151, 206, 255);
 }
 
-a {
-  color: #00B7FF;
+main{
+  padding: 30px;
 }
 
 .login {
@@ -15,5 +15,116 @@ a {
 }
 
 .login img {
+  height: 15px;
+}
+
+
+nav, header {
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 20px;
+  color:white;
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 50px;
+  background-color: rgb(113, 91, 223);
+  user-select: none;
+  padding:30px;
+}
+
+nav > div:last-child {
+  margin-left: auto;
+}
+
+.menu-items {
+  padding: 0 30px 0 0;
+}
+
+.response-pic {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.user-details {
+  background-color: rgb(196, 196, 196);
+  text-align: start;
+}
+
+.user-details img {
   height: 20px;
+}
+
+.individual-response {
+  margin: 10px;
+  padding: 10px;
+  background-color: rgb(234, 234, 234);
+  max-width: 33%;
+  border: rgb(98, 98, 98) solid 2px;
+}
+
+.individual-response img {
+  margin-bottom: 20px;
+}
+
+.individual-response:hover {
+  background-color: rgb(248, 248, 248);
+}
+
+.post-link {
+  text-decoration: none;
+  color:black
+}
+
+.post-link:hover{
+  font-style: bold;
+  color:black;
+}
+
+.response-caption {
+  max-width: 300px;
+}
+
+.main-post {
+  max-width: 100%;
+  background-color: #ccc;
+  padding: 30px;
+  margin: 30px;
+}
+
+.comment-thread {
+  width: 700px;
+  max-width: 100%;
+  border: 1px solid transparent; 
+  margin: 0 auto;
+}
+
+.comment {
+  background: rgb(163, 163, 163);
+  margin: 5px 0 5px 0;
+  padding: 10px
+}
+
+.comment-heading {
+  font-size: 14px;
+}
+
+.comment-author {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.comment-info {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+button {
+  padding: 0 10px 0 10px;
+  margin: 0 10px 0 10px;
+}
+
+.show-response-page {
+  text-align: center;
 }

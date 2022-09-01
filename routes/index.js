@@ -12,7 +12,7 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect : '/',
+    successRedirect : '/requests',
     failureRedirect : '/'
   }
 ));
@@ -25,7 +25,7 @@ router.get('/logout', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Welcome to Pic Hunter!' });
+  res.render('index', { title: 'Welcome to Reversetagram!' });
 });
 
 module.exports = router;
