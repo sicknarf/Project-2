@@ -1,9 +1,9 @@
 <%- include('../partials/header')%>
 
 <a href="/requests/<%= response.request %>" class="btn btn-outline-success">go back</a> 
-
-<%= response %>
-
+<form action="/requests/<%= response.request %>/<%= response.id %>?_method=DELETE" method="POST">
+    <button class="btn btn-outline-danger btn-sm" type="submit">delete this pic</button>
+</form>
 <br>
 <br>
 Take a look at your pic here: <br>
@@ -12,9 +12,7 @@ Take a look at your pic here: <br>
 <%= response.caption %>
 
 <% if (response.comments.length){ %>
-
     <% response.comments.forEach(function(r) { %>
-
         <div class="comment">
             <form action="/requests/<%= response.request %>/<%= response.id %>/<%= r._id %>?_method=DELETE" method="POST">
                 <button class="btn btn-outline-danger btn-sm" type="submit">X</button>
@@ -24,29 +22,26 @@ Take a look at your pic here: <br>
                 <button class="btn btn-outline-dark btn-sm" type="submit">edit</button>
             </a>
         </div>
-    
     <% })} else { %>
-    
     <h4>no comments yet.</h4>
     <% } %>
-
+    <% if (user){ %>
     <form action="/requests/<%= response.request %>/<%= response.id %>" method="POST">
         <label>
             <textarea name="comment" rows="3" cols="40" placeholder="enter a comment..."></textarea>
         </label><br>
         <input type="submit" class="btn btn-outline-info" value="add a comment!">
     </form>
-
+    <% }else{ %>
+        <a class="btn btn-outline-danger" href="/auth/google">log in to comment and rate</a>
+    <% } %>
     <% if (response.ratings.length){ %>
-
         <%= avg %> out of 5 stars
-
         <% } else { %>
-        
         <h4>no ratings yet.</h4>
         <% } %>
-
         <form action="/requests/<%= response.request %>/<%= response.id %>/rate" method="POST">
+        <% if (user){ %>
         <select name="rating">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -54,7 +49,8 @@ Take a look at your pic here: <br>
             <option value="4">4</option>
             <option value="5" selected>5</option>
         </select>
-        <input type="submit" class="btn btn-outline-info btn-sm" value="rate this picture">
+            <input type="submit" class="btn btn-outline-info btn-sm" value="rate this picture">
+        <% } %>
         </form>
 
 <%- include('../partials/footer')%>

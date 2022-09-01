@@ -6,6 +6,7 @@ const userSchema = new Schema({
     // requests: { type: Number,
     //             default: 0},
     googleId: {type: String, required: true},
+    name: String,
     email: String,
     avatar: String
 }, {

@@ -9,9 +9,6 @@ function newResponse(req, res) {
 function createResponse(req, res){
     let requestId = req.params.id;
     req.body.request = requestId;
-    req.body.user = req.user._id;
-    req.body.userName = req.user.name;
-    req.body.userAvatar = req.user.avatar;
     Response.create(req.body, function (err, response){
         res.redirect(`/requests/${requestId}`)
     })
@@ -32,19 +29,20 @@ function averageRatings(array){
     return (avg/array.length).toFixed(2)
 }
 
-// function showResponse(req, res){
-//     Response.findById(req.params.id, function(err, response){
-//         Request.findById({request: response.request}, function(err, response) {
-//             if (err) return res.render('./error', {error: err, message: 'oops'});
-//             res.render('responses/show', {request, response, title: 'request details'});
-//         })})
-// }
-
-
-// res.redirect(`/requests/${response.request}/${response.id}`)
+function deleteResponse(req, res) {
+    Response.findOne({'response._id': req.params.id})
+        .then(function(response){
+            response.remove()
+            .then(function(){
+                res.redirect(`/requests`)
+            }).catch(function (error){
+            return next(error)
+            })})
+}
 
 module.exports = {
     new: newResponse,
     create: createResponse,
     show: showResponse,
+    delete: deleteResponse,
 }

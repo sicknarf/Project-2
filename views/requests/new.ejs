@@ -1,5 +1,5 @@
 <%- include('../partials/header')%>
-
+<% if (user){ %>
 <h2>Enter a new request</h2>
 <form action="/requests" method="POST">
     <label>Enter a Category
@@ -10,5 +10,7 @@
     </label><br>
     <input type="submit" value="Add Request">
   </form>
-
+<% }else{ %>
+  <h1>you must be logged in to do this</h1>
+<% } %>
 <%- include('../partials/footer')%>

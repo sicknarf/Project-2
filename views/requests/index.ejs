@@ -14,7 +14,7 @@
   <tbody>
     <% requests.forEach(function(r) { %>
       <tr>
-        <td><%= r.user %></td>
+        <td><%= r.userName %></td>
         <td><%= r.category %></td>
         <td><%= r.title %></td>
         <td><%= `${r.createdAt.getUTCMonth()+1}-${r.createdAt.getUTCDate()}-${r.createdAt.getUTCFullYear()}` %></td>
@@ -23,6 +23,5 @@
     <% }); %>
   </tbody>
 </table>
-
 
 <%- include('../partials/footer')%>

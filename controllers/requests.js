@@ -1,6 +1,6 @@
 const Request = require('../models/userRequest');
 const Response = require('../models/userResponse');
-// const Category = require('../models/category');
+// const Category = require('../models/category'); // to be added into icebox
 
 function index(req, res) { // not yet working
     Request.find({}, function(err, requests) {
@@ -15,9 +15,11 @@ function newRequest(req, res) {
 
 function createRequest(req, res) {
     const request = new Request(req.body);
-    req.body.user = req.user._id;
-    req.body.userName = req.user.name;
-    req.body.userAvatar = req.user.avatar;
+    request.user = req.user._id;
+    request.userName = req.user.name;
+    request.userAvatar = req.user.avatar;
+    console.log(req.body);
+    console.log(request)
     request.save(function(err) {
     // if (err) return res.render('./error', {error: err, message: 'oops'});
     if (err) return res.render('requests/new', { title: 'new request form'});

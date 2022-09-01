@@ -5,7 +5,8 @@ const commentSchema = new Schema({
   comment: { type: String, 
         },
   user: {   type: Schema.Types.ObjectId, 
-            ref: 'User'},
+            ref: 'User',
+        },
   userName: String,
   userAvatar: String
 }, {
@@ -18,7 +19,8 @@ const ratingSchema = new Schema({
             max: 5, 
             default: 5},
   user: {   type: Schema.Types.ObjectId, 
-            ref: 'User'},
+            ref: 'User'
+        },
   userName: String,
   userAvatar: String
 });
