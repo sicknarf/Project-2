@@ -51,17 +51,19 @@
             <p>
                 <%= r.comment %>
             </p>
-            <% if (user && user._id.equals(r.user)) { %>
+            <% if (user) { %>
                 <div class="d-flex justify-content-end">
+            <% if (user._id.equals(r.user)) {%>
                     <form action="/requests/<%= response.request %>/<%= response.id %>/<%= r._id %>/edit">
                         <button class="btn btn-outline-dark btn-sm" type="submit">edit</button>
                     </form>
                     &nbsp;
+            <% } if (user._id.equals(r.user) || (user._id.equals(response.user))) { %>
                     <form action="/requests/<%= response.request %>/<%= response.id %>/<%= r._id %>?_method=DELETE" method="POST">
                         <button class="btn btn-outline-danger btn-sm" type="submit">delete</button>
                     </form>
-                </div>
-            <% } %>
+                <% }} %>
+            </div>
         </div>
     </div>
 </div>
