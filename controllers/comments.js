@@ -6,8 +6,6 @@ function create(req, res){
         req.body.userName = req.user.name;
         req.body.userAvatar = req.user.avatar;
         response.comments.push(req.body);
-        console.log('below is response')
-        console.log(response)
         response.save(function(error){
             if (error) return res.render('./error', {error, message: 'ya dun goofed'});
             res.redirect(`/requests/${response.request}/${response.id}`)

@@ -1,9 +1,12 @@
 <%- include('../partials/header')%>
 
 <a href="/requests/<%= response.request %>" class="btn btn-outline-success">go back</a> 
+
+
 <form action="/requests/<%= response.request %>/<%= response.id %>?_method=DELETE" method="POST">
     <button class="btn btn-outline-danger btn-sm" type="submit">delete this pic</button>
 </form>
+
 <br>
 <br>
 Take a look at your pic here: <br>
@@ -14,9 +17,11 @@ Take a look at your pic here: <br>
 <% if (response.comments.length){ %>
     <% response.comments.forEach(function(r) { %>
         <div class="comment">
+            <% if (user && user._id.equals(response.user)) { %>
             <form action="/requests/<%= response.request %>/<%= response.id %>/<%= r._id %>?_method=DELETE" method="POST">
                 <button class="btn btn-outline-danger btn-sm" type="submit">X</button>
             </form>
+            <% } %>
             <%= r.comment %>
             <a href="/requests/<%= response.request %>/<%= response.id %>/<%= r._id %>/edit">
                 <button class="btn btn-outline-dark btn-sm" type="submit">edit</button>
