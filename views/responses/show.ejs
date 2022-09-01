@@ -51,7 +51,7 @@
             <p>
                 <%= r.comment %>
             </p>
-            <% if (user && user._id.equals(response.user)) { %>
+            <% if (user && user._id.equals(r.user)) { %>
                 <div class="d-flex justify-content-end">
                     <form action="/requests/<%= response.request %>/<%= response.id %>/<%= r._id %>/edit">
                         <button class="btn btn-outline-dark btn-sm" type="submit">edit</button>
