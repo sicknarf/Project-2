@@ -20,7 +20,7 @@ _____________
 
 #### How I got here
 
-![favicon](/images/mongoose.jpeg)
+![favicon](/public/images/mongoose.jpeg)
 _____________
 
 #### Future Features
