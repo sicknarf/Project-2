@@ -16,6 +16,24 @@ ______________
 
 [click here to join the site](https://francis-project-two.herokuapp.com/)
 
+First, make sure you log in on the top right:
+![login](/public/images/login.png)
+
+From there, you can either make a new post, or hop into a post and see what someone is requesting
+![new post](/public/images/newpost.png)
+
+If you want to create a post, make sure you choose a unique category (it won't let you duplicate categories), and add more detail to your request.
+![create post](/public/images/createpost.png)
+
+Users can then respond with uploading their own pictures with the "post a pic!" button at the bottom.
+![new response](/public/images/postapic.png)
+
+This will take them to a form. Make sure to use a URL format, it won't take any other kind!
+![create pic](/public/images/createpic.png)
+
+Inside all the individual images will be more detail on the post, and from there you can add and manage comments.
+![comments](/public/images/comments.png)
+
 _____________
 
 #### How I got here
@@ -30,4 +48,4 @@ _____________
 
 #### Future Features
 
-As seen in the user stories above, there is still so much more to add to this forum. A table may not be the best use for a landing page, and I will confer with a UX designer to streamline that page, along with other pages as well. But more importantly, unlimited ratings are allowed right now. On top of that, while categories right now are unique, I want to be able to store them in a separate schema, so we can properly access and store history. Additionally, I want the default view of the data to be sorted by new.
+As seen in the user stories above, there is still so much more to add to this forum. A table may not be the best use for a landing page, and I will confer with a UX designer to streamline that page, along with other pages as well. But more importantly, the images can only be posted with a URL. In the future, I want users to be able to upload images directly from their devices. On top of that, while categories right now are unique, I want to be able to store them in a separate schema, so we can properly access and store history. Additionally, I want the default view of the data to be sorted by new.
