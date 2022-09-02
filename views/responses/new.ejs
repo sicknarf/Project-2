@@ -1,6 +1,6 @@
 <%- include('../partials/header')%>
 <% if (user){ %>
-<h2>Post a picture response user's request for category!</h2>
+<h2><%= request.userName %> is asking for: <b><%= request.category %></b></h2>
 <form action="/requests/<%= requestId %>/responses" method="POST">
     <label>Enter the imgur URL
       <input type="url" name="content">

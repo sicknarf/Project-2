@@ -16,7 +16,6 @@ function deleteComment(req, res) {
     Response.findOne({'comments._id': req.params.id})
         .then(function(response){
             const comment = response.comments.id(req.params.id);
-            // if(!review.user.equals(req.user._id)) return res.redirect(`/movies/${movie.id}`);
             comment.remove();
             response.save()
             .then(function(){

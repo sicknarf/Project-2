@@ -17,12 +17,12 @@
 
 <% response.forEach(function(r) { %>
     
-    <div class="p-4 individual-response">
+    <div class="individual-response">
         <a href="/requests/<%= request._id %>/<%= r._id %>" class="post-link">
             <div class="response-picture">
                 <img class="response-pic" src="<%= r.content %>">
             </div>
-        <div class="post-details"><div><%= r.userName %> says:</div><div class="response-caption"><%= r.caption %></div></div>
+        <div class="post-details"><div class="user-says"><%= r.userName %> says:</div><div class="response-caption"><%= r.caption %></div></div>
         </a>
     </div>
 <% }) %>

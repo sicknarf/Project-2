@@ -1,10 +1,10 @@
 const Response = require('../models/userResponse');
-// const Request = require('../models/userRequest');
+const Request = require('../models/userRequest');
 
 function newResponse(req, res) {
-    // console.log('below is req params id')
-    // console.log(req.params.id);
-    res.render('./responses/new', {title: 'submit a response', requestId: req.params.id})
+    Request.findById(req.params.id, function(err, request){
+        res.render('./responses/new', {title: 'submit a response', requestId: req.params.id, request})
+    })
 }
 
 function createResponse(req, res) {
