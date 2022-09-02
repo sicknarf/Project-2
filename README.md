@@ -24,7 +24,7 @@ I used Mongoose to demonstrate full CRUD functionality on my MongoDB Atlas datab
 
 ![wireframe](/public/images/wireframe.png)
 
-![userstories](/public/images/userstories.jpeg)
+![userstories](/public/images/userstories.png)
 
 _____________
 
