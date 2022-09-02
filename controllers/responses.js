@@ -47,6 +47,25 @@ function deleteResponse(req, res) {
             })})
 }
 
+// there is currently an issue with delete responses. Here's my code to fix it. still in progress.
+// function deleteResponse(req, res) {
+//     let individualResponse = req.params.id
+//     Response.findOne({'response._id': req.params.id})
+//         .then(function(request){
+//             console.log(request)
+//             let requestId = request.id;
+//             request.response.forEach(function(elem, idx){
+//                 if (elem.id === individualResponse){
+//                     request.response.slice(idx, 1)
+//                 }
+//             })
+//             .then(function(){
+//                 res.redirect(`/requests/${requestId}`)
+//             }).catch(function (error){
+//             return next(error)
+//             })})
+// }
+
 module.exports = {
     new: newResponse,
     create: createResponse,
