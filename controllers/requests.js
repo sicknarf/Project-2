@@ -2,7 +2,8 @@ const Request = require('../models/userRequest');
 const Response = require('../models/userResponse');
 // const Category = require('../models/category'); // to be added into icebox
 
-function index(req, res) { // not yet working
+function index(req, res) { 
+    // sortRequest();
     Request.find({}, function(err, requests) {
         if (err) return res.redirect('/');
         res.render('./requests/index', {requests, title: 'home'})
@@ -34,6 +35,11 @@ function show(req, res){
             res.render('requests/show', {request, response, title: `${request.userName} wants pics of ${request.category}`});
         })})
 }
+
+// sort by newest (icebox)
+// function sortRequest(){
+//     Request.find({}).sort('-createdAt').exec(function(err, docs){docs});
+// }
 
 module.exports = {
     index,

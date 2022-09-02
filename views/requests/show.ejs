@@ -13,7 +13,7 @@
 <br>
 <% if (response.length){ %>
 
-<div class="d-flex flex-wrap-reverse">
+<div class="d-flex flex-wrap">
 
 <% response.forEach(function(r) { %>
     
@@ -22,7 +22,13 @@
             <div class="response-picture">
                 <img class="response-pic" src="<%= r.content %>">
             </div>
-        <div class="post-details"><div class="user-says"><%= r.userName %> says:</div><div class="response-caption"><%= r.caption %></div></div>
+        <div class="post-details"><div class="user-says"><%= r.userName %> says:</div><div class="response-caption">
+            <% if(r.caption.length < 35) { %>
+            <%= r.caption %>
+            <% } else {%>
+            <%= r.caption.substring(0, 35)+"..." %>
+            <% } %>
+        </div></div>
         </a>
     </div>
 <% }) %>
