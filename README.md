@@ -20,9 +20,14 @@ _____________
 
 #### How I got here
 
-![favicon](/public/images/mongoose.jpeg)
+I used Mongoose to demonstrate full CRUD functionality on my MongoDB Atlas database. A user should be able to make a post (create), then other users can respond with their pictures onto that post (read/create). On those images, a comment thread can form. Similar to any comment thread, I've given users the functionality to edit (update) and (delete) their own comments. I've also given users who have posted the picture the ability to delete possibly inflammatory comments on their beloved picture. Below are the wireframe and user stories.
+
+![wireframe](/public/images/wireframe.png)
+
+![userstories](/public/images/userstories.jpeg)
+
 _____________
 
 #### Future Features
 
-
+As seen in the user stories above, there is still so much more to add to this forum. A table may not be the best use for a landing page, and I will confer with a UX designer to streamline that page, along with other pages as well. But more importantly, unlimited ratings are allowed right now. On top of that, while categories right now are unique, I want to be able to store them in a separate schema, so we can properly access and store history. Additionally, I want the default view of the data to be sorted by new.
