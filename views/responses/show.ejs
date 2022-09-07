@@ -7,7 +7,7 @@
 
 <% if (user && user._id.equals(response.user)) { %>
 <form action="/requests/<%= response.request %>/<%= response.id %>?_method=DELETE" method="POST">
-    <button class="btn btn-outline-danger" type="submit">delete this pic</button>
+    <button class="btn btn-outline-danger" type="submit">delete your pic</button>
 </form>
 <% } %>
 </div>
